@@ -1,7 +1,7 @@
 #key pair
 
 resource "aws_key_pair" "my_key" {
-    key_name = "${var.env}-${var.key_pair_name}"
+    key_name = "${var.key_pair_name}"
     public_key = file("./keys/terraform-ec2.pub")
     # public_key = "../keys/"
 
@@ -18,7 +18,7 @@ resource "aws_default_vpc" "default" {
 
 # #security group
 resource "aws_security_group" "ec2_SG" {
-    name        = "${var.env}-${var.securiy_group_name}"
+    name        = "${var.securiy_group_name}"
     description = "Allow TLS inbound traffic and all outbound traffic"
     vpc_id      = aws_default_vpc.default.id #interpolation
 
